@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>DITA</title>
+	<meta charset="UTF-8">
+    <meta http-equiv="language" content="es">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Estilos-->
+    <link rel="icon" type="img/png" href="img/logocoar.png">
+	<link rel="stylesheet" type="text/css" href="secondary/estilo.css">
+    <link rel="stylesheet" href="secondary/normalize.css">
+	<!--FontAwesome-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<!--Leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+	<header class="navigation">
+		<div class="navigation__logo">
+			<img src="img/logocoar.png" alt="Logo_Coar">
+			<h1>DITA</h1>
+		</div>
+		<ul class="navigation__links">
+			<a class="link__element" href="#">Inicio</a>
+			<a class="link__element" href="#">Corrupcion</a>
+			<a class="link__element" href="#">Actua ahora</a>
+			<a target="_blank" class="navigation--kids" href="kids.html">Niños</a>
+			<div>
+				<input type="checkbox" class="checkbox" id="chk">
+				<label class="checkbox__label" for="chk">
+					<i class="fas fa-moon"></i>
+					<i class="fas fa-sun"></i>
+					<div class="ball"></div>
+				</label>
+			</div>
+		</ul>
+	</header>
+	<section class="banner">
+		<input type="radio" name="banner" id="slideOne" checked>
+		<input type="radio" name="banner" id="slideTwo">
+		<input type="radio" name="banner" id="slideThree">
+		<input type="radio" name="banner" id="slideFour">
+		<div class="buttons">
+			<label for="slideOne"></label>
+			<label for="slideTwo"></label>
+			<label for="slideThree"></label>
+			<label for="slideFour"></label>
+		</div>
+		<div class="sliders">
+			<div class="firstSlide"></div>
+			<div class="secondSlide"></div>
+			<div class="thirdSlide"></div>
+			<div class="fourthSlide"></div>
+		</div>
+	</section>
+	<section class="searcher">
+		<article class="searcher__header">
+			<label>Casos de corrupcion en :</label>
+			<select name="select-location" id="select-location">
+				<option value="-6.2367,-77.8567">Amazonas, Peru</option>
+				<option value="-9.4075,-77.5003">Áncash, Peru</option>
+				<option value="-14.0347,-72.9383">Apurímac, Peru</option>
+				<option value="-15.8433,-72.4445">Arequipa, Peru</option>
+				<option value="-13.5316,-74.9795">Ayacucho, Peru</option>
+				<option value="-7.1775,-78.8344">Cajamarca, Peru</option>
+				<option value="-12.0569,-77.1181">Callao, Peru</option>
+				<option value="-13.5316,-71.9675">Cusco, Peru</option>
+				<option value="-12.7661,-74.8662">Huancavelica, Peru</option>
+				<option value="-9.7681,-75.0086">Huánuco, Peru</option>
+				<option value="-14.235,-75.574">Ica, Peru</option>
+				<option value="-11.1065,-75.357">Junín, Peru</option>
+				<option value="-7.9517,-78.6114">La Libertad, Peru</option>
+				<option value="-6.6296,-79.8068">Lambayeque, Peru</option>
+				<option value="-12.0464,-77.0428">Lima, Peru</option>
+				<option value="-4.2159,-69.9508">Loreto, Peru</option>
+				<option value="-11.7669,-69.7795">Madre de Dios, Peru</option>
+				<option value="-16.3894,-70.9279">Moquegua, Peru</option>
+				<option value="-10.6902,-76.2562">Pasco, Peru</option>
+				<option value="-5.1783,-80.655">Piura, Peru</option>
+				<option value="-15.8402,-70.0219">Puno, Peru</option>
+				<option value="-6.0369,-76.971">San Martín, Peru</option>
+				<option value="-18.0533,-70.275">Tacna, Peru</option>
+				<option value="-3.5669,-80.4513">Tumbes, Peru</option>
+				<option value="-9.1899,-75.0152">Ucayali, Peru</option>		
+			</select>
+		</article>
+		<div id="map"></div>
+	</section>
+	<section class="information">
+		
+		<article class="information__content">
+			<h2>Primero, definamos la Corrupcion</h2>
+			<div class="information__request">
+				<!-- Botones de informacion mostrar -->
+				<button id="public_sector">Sector publico</button>
+				<button id="juridic_sector">Sector Juridico</button>
+				<button id="education_sector">Sector educacion</button>
+				<button id="salud_sector">Sector Salud</button>
+				<button href="#">Niños</button>
+			</div>
+		</article>
+
+		<article class="corruption__section" id="bloque1">					
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Corrupcion Politica</h2>
+					<p>Fenómeno que implica la apropiación de poder publico relacionado a la influencia de intereses privados debilitando la integridad democractica</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="corruption__section" id="bloque2">					
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="corruption__section" id="bloque3">					
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="corruption__section" id="bloque4">					
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card__image"></div>
+				<div class="card__text">
+					<h2>Colusion</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos rem minima exercitationem ipsam quod provident odio, nihil sunt alias porro iure debitis vitae sint amet laborum vero nesciunt officiis? Eaque.</p>
+					<a href="">Averigualo</a>
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<section class="region">
+
+		<h1 class="heading">INFORMATE!</h1>
+
+		<div class="box-region">
+
+			<div class="box">
+				<iframe src="https://www.youtube.com/embed/VsUGQehGoGQ?si=M2tNR09B93w319ME" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+			</div>
+
+			<div class="box">
+				<iframe src="https://www.youtube.com/embed/VsUGQehGoGQ?si=M2tNR09B93w319ME" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+			</div>
+
+			<div class="box">
+				<iframe src="https://www.youtube.com/embed/VsUGQehGoGQ?si=M2tNR09B93w319ME" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+			</div>
+
+
+		</div>
+
+	</section>
+
+	
+	<section class="region fuentes">
+		
+		<h1 class="heading">Buscando fuentes</h1>
+		<div class="box-region">
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+			<div class="box">
+				<img src="img/card1.png" alt="">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi harum dolor ex quae totam beatae labore ab quis? A, ab fugit? Minus quae dolore laboriosam. Adipisci, omnis officiis. Nulla, sequi!</p>
+				<a href="#">BUSCA MAS INFORMACION</a>
+			</div>
+		</div>
+
+	</section>
+	</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>  	
+<script src="script.js"></script>	
+</body>
+</html>
+
+<!--Es de alguna manera el robo legal, es decir las coimas y la corrupcion engeneral-->
+				<!-- Oscar si estas en el codigo esta es la zona de niños se tiene que hacer una seccion especial con juegos en JS -->
